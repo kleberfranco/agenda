@@ -37,7 +37,7 @@
      `phone` varchar(15) NOT NULL,
      `email` varchar(250) NOT NULL,
      `status` tinyint NOT NULL,
-     `dt_cad` datetime DEFAULT NULL,
-     `dt_alt` datetime DEFAULT NULL,
+     `createdAt` datetime DEFAULT NULL,
+     `updateAt` datetime DEFAULT NULL,
      PRIMARY KEY (`contactid`)
    ) ENGINE=InnoDB DEFAULT CHARSET=latin1; ``

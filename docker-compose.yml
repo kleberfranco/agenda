@@ -1,0 +1,46 @@
+version: "2"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker-conf/app/Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/agenda
+    links:
+      - db
+#  nginx:
+#    build:
+#      context: .
+#      dockerfile: docker-conf/nginx/Dockerfile
+#    ports:
+#      - "80:80"
+#    links:
+#      - php-fpm
+#      - db
+#      - node
+#  php-fpm:
+#    build:
+#      context: .
+#      dockerfile: docker-conf/php/Dockerfile
+#    volumes:
+#      - .:/var/www/agenda
+#    links:
+#      - db
+  db:
+    build:
+      context: .
+      dockerfile: docker-conf/db/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: phonebook
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+#  node:
+#    build:
+#      context: .
+#      dockerfile: docker-conf/node/Dockerfile
+#    volumes:
+#      - .:/var/www/agenda
+#    tty: true

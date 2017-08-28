@@ -1,0 +1,14 @@
+# src/AppBundle/Resources/config/routes.yml
+default_page:
+    type: rest
+    resource: AppBundle\Controller\DefaultController
+    prefix: /
+    name_prefix: default_
+    defaults: { _format:  html }
+
+#document_cte:
+#    type: rest
+#    resource: AppBundle\Controller\CteController
+#    prefix: /v1
+#    name_prefix: cte_
+#    defaults: { _format:  json }

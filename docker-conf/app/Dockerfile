@@ -40,7 +40,7 @@ RUN chmod 777 -R /var/www/agenda/var/logs
 RUN chmod 777 -R /var/www/agenda/var/sessions
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
-RUN composer install --no-interaction --optimize-autoloader
+#RUN composer install --no-interaction --optimize-autoloader
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs

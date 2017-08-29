@@ -27,9 +27,9 @@ CREATE TABLE `contacts` (
   `name` varchar(250) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `email` varchar(250) NOT NULL,
-  `status` tinyint NOT NULL,
-  `dt_cad` datetime DEFAULT NULL,
-  `dt_alt` datetime DEFAULT NULL,
+  `status` char(1) NOT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updateAt` datetime DEFAULT NULL,
   PRIMARY KEY (`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

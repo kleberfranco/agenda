@@ -1,16 +1,16 @@
 version: '2'
-networks:
-  DefaultNetwork:
-    driver: bridge
-    driver_opts:
-      com.docker.network.bridge.enable_icc: "true"
-      com.docker.network.bridge.enable_ip_masquerade: "true"
-      com.docker.network.bridge.host_binding_ipv4: "0.0.0.0"
-      com.docker.network.driver.mtu: "1500"
-    ipam:
-      driver: default
-      config:
-      - subnet: 192.168.0.0/16
+#networks:
+#  DefaultNetwork:
+#    driver: bridge
+#    driver_opts:
+#      com.docker.network.bridge.enable_icc: "true"
+#      com.docker.network.bridge.enable_ip_masquerade: "true"
+#      com.docker.network.bridge.host_binding_ipv4: "0.0.0.0"
+#      com.docker.network.driver.mtu: "1500"
+#    ipam:
+#      driver: default
+#      config:
+#      - subnet: 192.168.0.0/16
 services:
   app:
     build:
@@ -20,11 +20,15 @@ services:
       - "80:80"
     volumes:
       - .:/var/www/agenda
-    networks:
-      DefaultNetwork:
-        ipv4_address: 192.168.0.32
+#    networks:
+#      DefaultNetwork:
+#        ipv4_address: 192.168.0.1
     links:
       - db
+      - node
+    depends_on:
+      - db
+      - node
 #  nginx:
 #    build:
 #      context: .
@@ -47,18 +51,18 @@ services:
     build:
       context: .
       dockerfile: docker-conf/db/Dockerfile
-    networks:
-      DefaultNetwork:
-        ipv4_address: 192.168.0.33
+#    networks:
+#      DefaultNetwork:
+#        ipv4_address: 192.168.0.2
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: phonebook
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-#  node:
-#    build:
-#      context: .
-#      dockerfile: docker-conf/node/Dockerfile
-#    volumes:
-#      - .:/var/www/agenda
-#    tty: true
+  node:
+    build:
+      context: .
+      dockerfile: docker-conf/node/Dockerfile
+    volumes:
+      - .:/var/www/agenda
+    tty: true

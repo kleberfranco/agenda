@@ -46,12 +46,12 @@ RUN echo "deb http://ftp.debian.org/debian sid main" >> /etc/apt/sources.list \
 RUN pecl install zip xdebug memcached
 
 # composer
-#RUN curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
 # phpunit
-#RUN wget https://phar.phpunit.de/phpunit-6.1.phar
-#RUN chmod +x phpunit-6.1.phar
-#RUN mv phpunit-6.1.phar /usr/local/bin/phpunit
+RUN wget https://phar.phpunit.de/phpunit-6.1.phar
+RUN chmod +x phpunit-6.1.phar
+RUN mv phpunit-6.1.phar /usr/local/bin/phpunit
 
 # Set default workdir
 ADD . /var/www/agenda
@@ -89,8 +89,9 @@ COPY docker-conf/php/php.ini /etc/php.ini
 
 #RUN composer install --no-interaction --optimize-autoloader
 
-#RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-#RUN apt-get install -y nodejs
+#RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+#    && apt-get install --yes nodejs
+
 #RUN npm install -g bower grunt-cli
 #RUN bower install --allow-root
 

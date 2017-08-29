@@ -21,22 +21,22 @@ class Contact
     private $contactid;
 
     /**
-     * @ORM\Column(name="name", type="string", length=500)
+     * @ORM\Column(name="name", type="string", length=250)
      */
     private $name;
 
     /**
-     * @ORM\Column(name="phone", type="text")
+     * @ORM\Column(name="phone", type="string", length=15)
      */
     private $phone;
 
     /**
-     * @ORM\Column(name="email", type="smallint")
+     * @ORM\Column(name="email", type="string", length=250)
      */
     private $email;
 
     /**
-     * @ORM\Column(name="status", type="integer")
+     * @ORM\Column(name="status", type="string", length=1)
      */
     private $status;
 
@@ -168,5 +168,6 @@ class Contact
     public function onPrePersist()
     {
         $this->createdAt = new DateTime();
+	    $this->status = "A";
     }
 }

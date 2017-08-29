@@ -16,6 +16,10 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "bootstrap-table": "^1.11.1",
+    "jquery.maskedinput": "^1.4.1",
+    "parsleyjs": "^2.7.2",
+    "notific8": "^4.4.1"
   }
 }

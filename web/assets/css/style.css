@@ -1,0 +1,11 @@
+.update {
+    margin-right: 5px;
+}
+.remove {
+    margin-left: 5px;
+}
+.alert {
+    padding: 0 14px;
+    margin-bottom: 0;
+    display: inline-block;
+}

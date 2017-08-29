@@ -10,25 +10,27 @@
 ## 3 - Run docker
 - cd local clone project
 
-`` docker-compose up -d --build``
+`` docker-compose up -d --build app``
 
 ## 4 - Dependencies project backend
 `` docker-compose exec app bash ``<br />
 `` cd /var/www/agenda``<br />
-`` composer install``<br />
+`` composer install --no-interaction --optimize-autoloader ``<br />
 
 ## 5 - Dependencies project frontend
-`` docker-compose exec app bash ``<br />
+`` docker-compose exec node bash ``<br />
 `` cd /var/www/agenda``<br />
 `` bower install --allow-root ``<br />
 
 ## 6 - Access
-- Acess: http://localhost/
-- API: http://localhost/doc
+- 1 - Set hosts 127.0.0.1 agenda.dev
 
-# Create database 
+- 2 - Acess: http://agenda.dev/
+- API: http://agenda.dev/doc
+
+# Create database (If docker does not create)
 `` docker-compose exec db bash ``<br />
-`` mysql --user=user --password=password``<br />
+`` mysql --user=user --password=password ``<br />
 `` CREATE DATABASE phonebook; ``<br />
 `` USE phonebook; ``<br />
 `` CREATE TABLE `contacts` (

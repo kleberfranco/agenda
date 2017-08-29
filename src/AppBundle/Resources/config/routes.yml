@@ -1,14 +1,15 @@
 # src/AppBundle/Resources/config/routes.yml
+api_phonebook:
+    type: rest
+    resource: AppBundle\Controller\ApiController
+    prefix: /api/v1
+    name_prefix: api_phonebook_
+    defaults: { _format:  json }
+
 default_page:
     type: rest
     resource: AppBundle\Controller\DefaultController
     prefix: /
-    name_prefix: default_
+    name_prefix: home_
     defaults: { _format:  html }
 
-#document_cte:
-#    type: rest
-#    resource: AppBundle\Controller\CteController
-#    prefix: /v1
-#    name_prefix: cte_
-#    defaults: { _format:  json }
